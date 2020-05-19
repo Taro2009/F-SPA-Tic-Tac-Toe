@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tictactoe</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Content/Tictactoe.css" />
+    <style>
+        /* Don't show the not-yet-loaded templates */
+        [ws-template], [ws-children-template] { display: none; }
+
+        /* Gives us the Tic tac toe feel */
+        td {
+            height: 100px;
+            width: 100px;
+            border: 2px solid #555;
+
+            text-align: center;
+            vertical-align: middle;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-size: 70px;
+            cursor: pointer;
+        }
+    
+        /* Moves the whole thing to the middle */
+        table {
+            border-collapse: collapse;
+            position: absolute;
+            left: 50%;
+            margin-left: -155px;
+            top: 50px;
+        }
+
+        /* We remove the unnecessary borders to look nicer */
+
+        table tr:first-child td {
+            border-top: 0;
+        }
+
+        table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        table tr td:first-child {
+            border-left: 0;
+        }
+        
+        table tr td:last-child {
+            border-right: 0;
+        }    
+
+        .winner {
+            background-color: red;
+        }
+
+        .easybutton {
+            width: 250px;
+            height: 50px;
+            font-size: 25px;
+            border: none;
+            color: white;
+            background: #32a852;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+        .hardbutton {
+            width: 250px;
+            height: 50px;
+            font-size: 25px;
+            border: none;
+            color: white;
+            background: #a83232;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+    </style>
+    <script type="text/javascript" src="Content/Tictactoe.head.js"></script>
+</head>
+
+<body>
+    
+    <div id="main" ws-children-template="Main">
+
+        <!-- These are "dummy" inputs, this is the best way to display the moves in the table -->
+        <input style="display: none;" ws-var="cell0var" />
+        <input style="        display: none;" ws-var="cell1var" />
+        <input style="display: none;" ws-var="cell2var" />
+
+        <input style="display: none;" ws-var="cell3var" />
+        <input style="display: none;" ws-var="cell4var" />
+        <input style="display: none;" ws-var="cell5var" />
+
+        <input style="display: none;" ws-var="cell6var" />
+        <input style="display: none;" ws-var="cell7var" />
+        <input style="display: none;" ws-var="cell8var" />
+
+        <input style="display: none;" ws-var="endgamevar" />
+
+
+        <!-- This is the actual game UI -->
+        <table>
+            <tr>
+                <td class="cell" ws-onclick="cell0" id="0">${cell0var}</td>
+                <td class="cell" ws-onclick="cell1" id="1">${cell1var}</td>
+                <td class="cell" ws-onclick="cell2" id="2">${cell2var}</td>
+            </tr>
+
+            <tr>
+                <td class="cell" ws-onclick="cell3" id="3">${cell3var}</td>
+                <td class="cell" ws-onclick="cell4" id="4">${cell4var}</td>
+                <td class="cell" ws-onclick="cell5" id="5">${cell5var}</td>
+            </tr>
+
+            <tr>
+                <td class="cell" ws-onclick="cell6" id="6">${cell6var}</td>
+                <td class="cell" ws-onclick="cell7" id="7">${cell7var}</td>
+                <td class="cell" ws-onclick="cell8" id="8">${cell8var}</td>
+            </tr>
+        </table>
+        <button class="easybutton" ws-onclick="startGameEasy">(RE) Start easy</button>
+        <br />
+        <button class="hardbutton" style="display: none;" ws-onclick="startGameHard">(RE) Start hard</button>
+        <div class="endgame">
+            <br />
+            <br />
+            <br />
+            <br />
+            <div style="font-size: 40px; color: red;" class="text">${endgamevar}</div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="Content/Tictactoe.min.js"></script>
+</body>
+</html>
